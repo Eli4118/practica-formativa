@@ -11,9 +11,42 @@
     <h3>Integrantes:</h3>
     <ul>
         <li id:"Mentita">Acosta, María Lis</li>
-        <li id:"fdfsf">Barrios, Dante</li>
-        <li id:"sdsds">Carmona, Eliana </li>
         <li id="jonathan-marcori">Marcori, Jonathan</li>
+        <li id="Dante"> Barrios, Dante Damian</li>
+        <li id="Eli">Carmona, Eli </li>
     </ul>
+  
+    <!-- Parte nueva en index.html -->
+    <form id="formulario"> 
+        <input type="text" id="usuario" name="usuario" placeholder="Usuario" required> 
+        <input type="password" id="password" name="pass" placeholder="Contraseña" required> 
+        <button type="submit">Enviar</button> 
+    </form> 
+  
+      <script> 
+        document.getElementById("formulario").addEventListener("submit", function(e){ 
+          const user = document.getElementById("usuario").value; 
+          const pass = document.getElementById("password").value; 
+          if (!user || !pass) { 
+            alert("Todos los campos son obligatorios"); 
+            e.preventDefault(); 
+          } 
+        }); 
+    </script> 
+
+   <script> 
+      document.getElementById("formulario").addEventListener("submit", function(e){ 
+        e.preventDefault(); 
+        fetch("recibeDatos.php", { 
+            method: "POST", 
+            headers: { "Content-Type": "application/x-www-form-urlencoded" }, 
+            body: new URLSearchParams({ 
+                usuario: document.getElementById("usuario").value, 
+                pass: document.getElementById("password").value 
+            }) 
+        }).then(r => r.text()).then(console.log); 
+    }); 
+    </script> 
+
 </body>
 </html>
