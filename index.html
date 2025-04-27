@@ -15,5 +15,18 @@
         <li>Carmona, Eliana</li>
         <li>Marcori, Jonathan</li>
     </ul>
+
+
+    <script> 
+        document.getElementById("formulario").addEventListener("submit", function(e){ 
+          const user = document.getElementById("usuario").value; 
+          const pass = document.getElementById("password").value; 
+          if (!user || !pass) { 
+            alert("Todos los campos son obligatorios"); 
+            e.preventDefault(); 
+          } 
+        }); 
+    </script> 
+        
 </body>
 </html>
