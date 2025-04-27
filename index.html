@@ -15,5 +15,26 @@
         <li>Carmona, Eliana</li>
         <li>Marcori, Jonathan</li>
     </ul>
+
+    <!-- Parte nueva en index.html -->
+    <form id="formulario"> 
+        <input type="text" id="usuario" name="usuario" placeholder="Usuario" required> 
+        <input type="password" id="password" name="pass" placeholder="Contraseña" required> 
+        <button type="submit">Enviar</button> 
+    </form> 
+
+    <script> 
+    document.getElementById("formulario").addEventListener("submit", function(e){ 
+        e.preventDefault(); 
+        fetch("recibeDatos.php", { 
+            method: "POST", 
+            headers: { "Content-Type": "application/x-www-form-urlencoded" }, 
+            body: new URLSearchParams({ 
+                usuario: document.getElementById("usuario").value, 
+                pass: document.getElementById("password").value 
+            }) 
+        }).then(r => r.text()).then(console.log); 
+    }); 
+    </script> 
 </body>
 </html>
